@@ -35,7 +35,7 @@
      */
     const DEFAULT_ACTION_HIDE_TIMEOUT = 500;
     let selectedDays = [];
-
+/*принимает массив дней и ставит им всем состояние "забронирован"*/
     function addBookedDays(days) {
         days.forEach((bookedDay) => {
             const n_date = N_CALENDAR.querySelector(`td[data-date="${bookedDay}"]`);
@@ -47,7 +47,7 @@
             n_date.querySelector('button').disabled = true;
         });
     }
-
+/* функция для удаления элемента из массива по его значению*/
     function removerFromArray(array, el) {
         const index = array.indexOf(el);
         if (index > -1) {
@@ -55,7 +55,7 @@
         }
         return array;
     }
-
+/*добавляет выбранные дни в массив*/
     function saveSelectedDays() {
         const n_parent = this.parentNode;
         const selectedDate = n_parent.dataset.date;
@@ -78,7 +78,7 @@
             N_BOOK_ACTION.disabled = false;
         }
     }
-
+/*меняет статусы на основе ветвления*/
     function showResult(type) {
         N_LOADING_ANIMATION.style['animation-duration'] = '0s';
         N_LOADING_ANIMATION.style['background-color'] = L_SERVER_STATUSES[type].color;
@@ -93,7 +93,7 @@
             N_SERVER_STATUS_LINE.classList.add(HIDDEN_CLASS);
         }, DEFAULT_ACTION_HIDE_TIMEOUT);
     }
-
+/*отправляет дни для брони на сервер, а после успешного бронирования просит addBookedDays поставить этим днЯм состояние заброннировано*/
     function book() {
         N_BOOK_ACTION.disabled = true;
         N_LOADING_ANIMATION.style['animation-duration'] = DEFAULT_ANIMATION_DURATION;
@@ -120,6 +120,7 @@
         N_BOOK_ACTION.addEventListener('click', book);
     }
 
+/*Это чтобы пользователь не мог тыкать в календарь пока он еще не готов*/
     function initialize() {
         catchButtons();
         fetch(`api.php`).then((response) => {
@@ -138,7 +139,7 @@
                 showResult('ERROR');
             });
     }
-
+/*сделано чтобы код начинал работать только после подггтовки DOM*/
     window.onload = () => {
         document.body.classList.remove('no-js');
         initialize();
