@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&subset=cyrillic-ext');
+body {
+    font-size: 12px;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    color: #404040;
+    background-color: #bec3c7;
+}
+
+.container {
+    max-width: 620px;
+    min-height: 510px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    margin: 50px auto 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.caption-label {
+    text-align: center;
+    padding-top: 26px;
+    font-weight: 300;
+    padding-bottom: 16px;
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    margin: 0;
+    align-items: center;
+}
+
+.description-item {
+    margin-left: 0;
+}
+
+.description-item-icon {
+    height: 35px;
+    width: 35px;
+    display: block;
+    margin: 0 8px;
+    border-radius: 2px;
+}
+
+.description-item-icon_booked {
+    background-color: #e84c3d;
+}
+
+.description-item-icon_selected {
+    background-color: #2dcc70;
+}
+
+.description-item-label {
+    padding-left: 11px;
+    position: relative;
+    margin: 0;
+
+}
+
+.description-item-label:before {
+    content: "-";
+    left: -6px;
+    top: 0;
+    position: relative;
+}
+
+.date-today-label {
+    margin-top: 31px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.booking {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    transition: opacity 0.25s;
+}
+
+.js-booking {
+    opacity: 0.3;
+    z-index: -1;
+}
+
+@media (max-width: 640px) {
+    .booking {
+        flex-wrap: wrap;
+    }
+}
+
+.booking-row {
+    flex: 50%;
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar {
+    text-align: center;
+    border-collapse: collapse;
+    margin: 0 30px;
+    font-size: 14px;
+    position: relative;
+}
+
+.calendar th, td {
+    border: 1px solid #848a8a;
+}
+
+.calendar th {
+    padding: 10px 0;
+}
+
+.calendar td {
+    padding: 0;
+    margin: 0;
+}
+
+.calendar button {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    background-color: white;
+    border: 0;
+    transition: all 0.25s;
+
+}
+
+.calendar button:hover, .calendar button:focus {
+    background-color: #bec3c7;
+    cursor: pointer;
+    outline: none;
+}
+
+.calendar button[disabled]:hover, .calendar button[disabled]:focus {
+    outline: none;
+    cursor: default;
+}
+
+.calendar-day_booked button {
+    background-color: #e84c3d;
+    color: #ffffff;
+
+}
+
+.calendar-day_booked button:hover,
+.calendar-day_booked button:focus {
+    background-color: #e84c3d;
+    cursor: not-allowed;
+    outline: none;
+}
+
+.calendar-day_selected button {
+    background-color: #2dcc70;
+    color: #ffffff;
+}
+
+.calendar-day_selected button:hover,
+.calendar-day_selected button:focus {
+    background-color: #2db35d;
+    outline: none;
+}
+
+.controls-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls-btn {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    display: block;
+    width: 180px;
+    height: 40px;
+}
+
+.controls-book {
+    transition: opacity 0.25s;
+    border:0;
+    background-image: linear-gradient(to bottom, #32c86e, #2aac64);
+}
+
+.controls-book:hover,
+.controls-book:focus {
+    background-image: linear-gradient(to bottom, #2aac64, #32c86e);
+}
+
+.controls-book[disabled],
+.controls-book[disabled]:hover,
+.controls-book[disabled]:focus {
+    background-image: linear-gradient(to bottom, #cccccc, #9d9d9d);
+}
+
+.controls-note {
+    transition: opacity 0.25s;
+}
+
+.js-loading {
+    content: "";
+    display: block;
+    background-color: #32c86e;
+    height: 5px;
+    position: relative;
+    -webkit-animation-duration: 20s;
+    animation-duration: 10s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -webkit-animation-name: horizontalProgressBar;
+    animation-name: horizontalProgressBar;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+    left: 0;
+    top: 0;
+    width: 0;
+    z-index: 9999;
+}
+
+.no-js .js-loading {
+    visibility: hidden;
+}
+
+@keyframes horizontalProgressBar {
+    0% {
+        width: 0;
+    }
+    25% {
+        width: 22%;
+    }
+    50% {
+        width: 55%;
+    }
+    75% {
+        width: 83%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes horizontalProgressBar {
+    0% {
+        width: 0;
+    }
+    25% {
+        width: 22%;
+    }
+    50% {
+        width: 55%;
+    }
+    75% {
+        width: 83%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* HELPERS */
+
+.invisible {
+    opacity: 0;
+}
+
+/* HELPERS END */
